@@ -3,16 +3,9 @@ pipeline {
 
     stages {
 
-        stage('Clean') {
-            steps {
-                echo "Cleaning the directory on Branch: ${env.BRANCH_NAME}"
-                sh "mvn clean"
-            }
-        }
-
         stage('Compile') {
             steps {
-                echo "Compiling the code"
+                echo "Compile the code"
                 sh "mvn compile"
             }
         }
