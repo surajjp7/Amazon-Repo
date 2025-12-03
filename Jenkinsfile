@@ -19,14 +19,14 @@ pipeline {
 
         stage('Validate') {
             steps {
-                echo "Validating the project"
+                echo "Validate the project"
                 sh "mvn validate"
             }
         }
 
         stage('Package') {
             steps {
-                echo "Packaging the Artifact"
+                echo "Package the Artifact"
                 sh "mvn package"
             }
         }
