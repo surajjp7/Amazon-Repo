@@ -1,21 +1,22 @@
 pipeline {
     agent any
+
     stages {
-        
+
         stage('Clean') {
             steps {
-                echo "Cleaning the directory"
+                echo "Cleaning the directory on Branch: ${env.BRANCH_NAME}"
                 sh "mvn clean"
             }
         }
-        
+
         stage('Compile') {
             steps {
-                echo "Compile"
+                echo "Compiling the code"
                 sh "mvn compile"
             }
         }
-        
+
         stage('Validate') {
             steps {
                 echo "Validating the project"
@@ -29,13 +30,14 @@ pipeline {
                 sh "mvn package"
             }
         }
-    }
-    post {
-        success {
-            echo "Pipeline executed successfully!"
-        }
-        failure {
-            echo "Pipeline failed!"
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo "Deploying the artifact only for MAIN branch"
+            }
         }
     }
 }
