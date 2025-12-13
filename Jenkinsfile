@@ -23,14 +23,5 @@ pipeline {
                 sh "mvn package"
             }
         }
-
-        stage('Deploy') {
-            when {
-                branch 'main'
-            }
-            steps {
-                echo "Deploying the artifact only for MAIN branch"
-            }
-        }
     }
 }
