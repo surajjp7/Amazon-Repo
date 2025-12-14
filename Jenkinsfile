@@ -5,21 +5,21 @@ pipeline {
 
         stage('Compile') {
             steps {
-                echo "Compile code"
+                echo "Compile the code"
                 sh "mvn compile"
             }
         }
 
         stage('Validate') {
             steps {
-                echo "Validating the project"
+                echo "Validate the project"
                 sh "mvn validate"
             }
         }
 
         stage('Package') {
             steps {
-                echo "Packaging the Artifact"
+                echo "Package the Artifact"
                 sh "mvn package"
             }
         }
